@@ -6,7 +6,9 @@ function initialize(){
 //function to create a table with cities and their populations
 function cities(){
 	//define two arrays for cities and population
-	let cityPop = [
+	console.log('hello');
+
+	 cityPop = [ //creating an array to populate the table
 		{
 			city: 'Madison',
 			population: 233209
@@ -26,24 +28,24 @@ function cities(){
 	];
 
 	//append the table element to the div
-	$("#mydiv").append("<table>");
+	$('#mydiv').append('<table>');
 
 	//append a header row to the table
-	$("table").append("<tr>");
+	$('table').append('<tr>');
 
 	//add the "City" and "Population" columns to the header row
-	$("tr").append("<th>City</th><th>Population</th>");
+	$('tr').append('<th>City</th><th>Population</th>');
 
 	//loop to add a new row for each city
-    for (let i = 0; i < cityPop.length; i++){
+    for (var i = 0; i < cityPop.length; i++){
         //assign longer html strings to a variable
-        let rowHtml = "<tr><td>" + cityPop[i].city + "</td><td>" + cityPop[i].population + "</td></tr>";
+        var rowHtml = '<tr><td>' + cityPop[i].city + '</td><td>' + cityPop[i].population + '</td></tr>';
         //add the row's html string to the table
-        $("table").append(rowHtml);
+        $('table').append(rowHtml);
     };
 
-    addColumns(cityPop);
-    addEvents();
+  addColumns(cityPop);
+	addEvents();
 };
 
 function addColumns(cityPop){
@@ -52,54 +54,54 @@ function addColumns(cityPop){
 
     	if (i == 0){
 
-    		$(this).apend('<th>City Size</th>');
+    		$(this).append('<th>City Size</th>'); //adds header row
     	} else {
 
-    		let citySize;
+    		var citySize;
 
-    		if (cityPop[i-1].population < 100000){
+    		if (cityPop[i-1].population < 100000){ // adds city size descriptors
     			citySize = 'Small';
 
     		} else if (cityPop[i-1].population < 500000){
-    			citysize = 'Medium';
+    			citySize = 'Medium';
 
     		} else {
     			citySize = 'Large';
     		};
 
-    		$this.append('<td' + citySize + '</td>');
+    		$(this).append('<td>' + citySize + '</td>'); //appends to table
     	};
     });
 };
 
 function addEvents(){
 
-	$('#table').mouseover(function(){
+	$('#table').mouseover(function(){ //is this accessing the right div??? should it by mydiv instead? if so, that doesn't fix the error in 97
 
-		let color = "rgb(";
+		var color = 'rgb(';
 
-		for (let i=0; i<3; i++){
+		for (var i=0; i<3; i++){
 
-			let random = Math.round(Math.random() * 255);
+			var random = Math.round(Math.random() * 255); // generates a random number 1-255
 
-			color += "random";
+			color += random; //adds that number to color
 
 			if (i<2){
-				color += ",";
+				color += ', '; //if there are two or fewer numbers, adds a comma
 
 			} else {
-				color += ")";
+				color += ')'; //if there are three colors, adds an ending parenthesis
 		};
 
-		$(this).css('color', color);
-	});
+		$(this).css('color', color); //tells the table to change to the constructed color
+	});  //won't stop giving error: Uncaught SyntaxError: Unexpected token ')'
 
-	function clickme(){
+	function clickme(){ //adds popup for clicking the table
 
 		alert('Hey, you clicked me!');
 	};
 
-	$('table').on('click', clickme);
+	$('#table').on('click', clickme);
 };
 
 //call the initialize function when the document has loaded

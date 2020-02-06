@@ -1,10 +1,11 @@
-//initialize function called when script loads
+//initialize function called when the script loads
 function initialize(){
     cities();
 };
 
 //function to create a table with cities and their populations
 function cities(){
+    //define two arrays for cities and population
     var cities = [
         'Madison',
         'Milwaukee',
@@ -18,23 +19,23 @@ function cities(){
         27244
     ];
 
-    //create a table element
+    //create the table element
     var table = document.createElement("table");
 
     //create a header row
     var headerRow = document.createElement("tr");
 
-    //add city column to header row
+    //add the "City" column
     var cityHeader = document.createElement("th");
     cityHeader.innerHTML = "City";
     headerRow.appendChild(cityHeader);
 
-    //add population column to header row
+    //add the "Population" column
     var popHeader = document.createElement("th");
     popHeader.innerHTML = "Population";
     headerRow.appendChild(popHeader);
 
-    //add the header row
+    //add the row to the table
     table.appendChild(headerRow);
 
     //loop to add a new row for each city
@@ -57,4 +58,5 @@ function cities(){
     mydiv.appendChild(table);
 };
 
+//call the initialize function when the window has loaded
 window.onload = initialize();
