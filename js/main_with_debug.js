@@ -6,7 +6,6 @@ function initialize(){
 //function to create a table with cities and their populations
 function cities(){
 	//define two arrays for cities and population
-	console.log('hello');
 
 	 cityPop = [ //creating an array to populate the table
 		{
@@ -76,7 +75,7 @@ function addColumns(cityPop){
 
 function addEvents(){
 
-	$('#table').mouseover(function(){ //is this accessing the right div??? should it by mydiv instead? if so, that doesn't fix the error in 97
+	$('table').mouseover(function(){ //is this accessing the right div??? should it by mydiv instead? if so, that doesn't fix the error in 97
 
 		var color = 'rgb(';
 
@@ -91,7 +90,8 @@ function addEvents(){
 
 			} else {
 				color += ')'; //if there are three colors, adds an ending parenthesis
-		};
+			};
+		}
 
 		$(this).css('color', color); //tells the table to change to the constructed color
 	});  //won't stop giving error: Uncaught SyntaxError: Unexpected token ')'
@@ -101,7 +101,7 @@ function addEvents(){
 		alert('Hey, you clicked me!');
 	};
 
-	$('#table').on('click', clickme);
+	$('table').on('click', clickme);
 };
 
 //call the initialize function when the document has loaded
